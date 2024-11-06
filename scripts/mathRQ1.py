@@ -1,15 +1,29 @@
 import pandas as pd
 import scipy.stats as stats
 import numpy as np
+import json
+import statsmodels.api as sm
 
-data = pd.read_csv('data.csv')
+with open('summedUp_data.json', 'r') as file:
+    data = json.load(file)
 
-both = data['both'].sum()
-neither = data['neither'].sum()
-bechdel_only = data['bechdel'].sum()
-mako_mori_only = data['makomori'].sum()
+df = pd.DataFrame(data)
 
-contingency_table = np.array([[both, bechdel_only], [mako_mori_only, neither]])
+df['bechdel_pass'] = df['bechdel'] >= 3
+df['mako_mori_pass'] = df['mako-mori'] > 0
+
+df['both'] = df['bechdel_pass'] & df['mako_mori_pass']
+df['neither'] = ~df['bechdel_pass'] & ~df['mako_mori_pass']
+df['bechdel_only'] = df['bechdel_pass'] & ~df['mako_mori_pass']
+df['mako_mori_only'] = ~df['bechdel_pass'] & df['mako_mori_pass']
+
+both_count = df['both'].sum()
+neither_count = df['neither'].sum()
+bechdel_only_count = df['bechdel_only'].sum()
+mako_mori_only_count = df['mako_mori_only'].sum()
+
+contingency_table = np.array([[both_count, bechdel_only_count], 
+                              [mako_mori_only_count, neither_count]])
 
 print("Contingency Table:")
 print(contingency_table)
@@ -23,10 +37,9 @@ if p < 0.05:
 else:
     print("\nNo significant association between Bechdel and Mako Mori based on Chi-Square test (p > 0.05).")
 
-
-odds_ratio = (both * neither) / (bechdel_only * mako_mori_only)
+odds_ratio = (both_count * neither_count) / (bechdel_only_count * mako_mori_only_count)
 log_or = np.log(odds_ratio)
-se_log_or = np.sqrt(1/both + 1/neither + 1/bechdel_only + 1/mako_mori_only)
+se_log_or = np.sqrt(1/both_count + 1/neither_count + 1/bechdel_only_count + 1/mako_mori_only_count)
 
 ci_lower = np.exp(log_or - 1.96 * se_log_or)
 ci_upper = np.exp(log_or + 1.96 * se_log_or)
