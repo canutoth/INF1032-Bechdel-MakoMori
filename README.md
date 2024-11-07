@@ -22,6 +22,7 @@ Our project uses data from the following sources:
 
 - Bechdel Test API: Determines whether films pass the Bechdel Test based on three criteria.
 - OMDb: Provides metadata such as title, release year, genre, and country.
+-  OpenAI’s GPT-3.5 Turbo API
 
 To ensure replicability, `/data` also:
 1. Explains the data extraction process from the various APIs and methods used and
@@ -38,8 +39,8 @@ We advise you to grab the data sample to compile your code or to extract your ow
 
 - a
 - b
-- c
-- `math.py`: Runs various statistical tests, such as (insert tests). Further explanation and listing of all tests can be found at /data.
+- `makomori_label.py`: Classifies each film in the dataset as "pass" or "fail" based on the Mako Mori test criteria.
+- `mathRQ1.py` and `mathRQ2.py`: Runs various statistical tests, such as the Chi-Square Test and the Odds Ratio Test. Further explanation and listing of all tests can be found at /data.
 
 ***
 
