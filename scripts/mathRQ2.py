@@ -5,7 +5,7 @@ import json
 from scipy.stats import spearmanr
 
 # Load JSON data
-with open('C:/Users/AISE LAB/Documents/inf1032/INF1032-Bechdel-MakoMori/data/summedUp_data.json', 'r') as file:
+with open('summedUp_data.json', 'r') as file:
     data = json.load(file)
 
 # Create a DataFrame from JSON data
