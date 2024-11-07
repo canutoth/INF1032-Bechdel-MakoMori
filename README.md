@@ -2,7 +2,7 @@
 
 ### Overview
 
-Welcome to the repository for *Title*, the final project for the Introduction to Data Science chair at Pontifical Catholic University of Rio de Janeiro (PUC-Rio). This repository contains all the codes, data, and resources used to build the project, which examines gender representation in cinema using the Bechdel Test as the primary evaluation tool.
+Welcome to the repository for *Title*, the final project for the Introduction to Data Science chair at Pontifical Catholic University of Rio de Janeiro (PUC-Rio). This repository contains all the codes, data, and resources used to build the project, which examines gender representation in cinema using both the Bechdel and the Mako Mori Tests as primary evaluation tools.
 
 ***
 
