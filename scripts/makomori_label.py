@@ -2,7 +2,7 @@ import time
 from openai import OpenAI
 import json
 
-client = OpenAI(api_key="YOUR-KEY-HERE")
+client = OpenAI(api_key="YOUR_KEY_HERE")
 
 file_path = 'makomori_to-label.json'
 
@@ -31,7 +31,7 @@ def analyze_film(film):
 
     Here is the film data:
     Title: {film["title"]}
-    IMDb ID: {film["imdbID"]}
+    imdbID: {film["imdbID"]}
     Plot: {film["Plot"]}
 
     Classify the film in the category "mako-mori" as 0 (the film didn't pass the test) or 1 (the film passed the test).
@@ -78,15 +78,17 @@ results = []
 start_time = time.time()
 
 with open('makomori_labeled.json', 'a') as outfile:
+    outfile.write('[/n')
     for film in films:
         try:
             analysis = analyze_film(film)
             results.append(analysis)
-            outfile.write(analysis + '\n')
+            outfile.write(analysis + ',/n')
         
         except Exception as e:
-            print(f"Error processing film {film['title']} (IMDb ID: {film['imdbID']}): {e}")
+            print(f"Error processing film {film['title']} (imdbID: {film['imdbID']}): {e}")
             break
+    outfile.write('/n]')
 
 end_time = time.time()
 for result in results:

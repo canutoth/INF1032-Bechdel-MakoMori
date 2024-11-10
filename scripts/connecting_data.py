@@ -10,11 +10,12 @@ with open('makomori_labeled.json') as f:
 all_data_df = pd.json_normalize(all_data)
 makomori_data_df = pd.DataFrame(makomori_data)
 
-merged_df = pd.merge(all_data_df, makomori_data_df)
+merged_df = pd.merge(all_data_df, makomori_data_df, left_on='imdbid', right_on='imdbID')
 
-final_df = merged_df[['title', 'bechdel', 'imdbid', 'details.imdbRating', 'mako-mori', 'details.BoxOffice']]
+final_df = merged_df[['title_x', 'bechdel', 'imdbid', 'details.imdbRating', 'mako-mori', 'details.BoxOffice']]
 
 final_df = final_df.rename(columns={
+    'title_x': 'title',
     'imdbid': 'imdbID',
     'details.imdbRating': 'rating',
     'mako-mori': 'mako-mori',
@@ -22,7 +23,6 @@ final_df = final_df.rename(columns={
 })
 
 final_json = final_df.to_dict(orient='records')
-with open('final.json', 'w') as f:
-    json.dump(final_json, f, indent=4)
 
-print("final.json has been created successfully.")
+with open('summedUp_data.json', 'w') as f:
+    json.dump(final_json, f, indent=4)
