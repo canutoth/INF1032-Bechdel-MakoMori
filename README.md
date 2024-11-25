@@ -1,8 +1,8 @@
-# Title
+#  Passing the Bechdel-Mako Bar: How Cinema Stacks Up on Gender Representation
 
 ### Overview
 
-Welcome to the repository for *Title*, the final project for the Introduction to Data Science chair at Pontifical Catholic University of Rio de Janeiro (PUC-Rio). This repository contains all the codes, data, and resources used to build the project, which examines gender representation in cinema using both the Bechdel and the Mako Mori Tests as primary evaluation tools.
+Welcome to the repository for *Passing the Bechdel-Mako Bar: How Cinema Stacks Up on Gender Representation*, the final project for the Introduction to Data Science chair at Pontifical Catholic University of Rio de Janeiro (PUC-Rio). This repository contains all the codes, data, and resources used to build the project, which examines gender representation in cinema using both the Bechdel and the Mako Mori Tests as primary evaluation tools.
 
 ***
 
@@ -37,8 +37,6 @@ We advise you to grab the data sample to compile your code or to extract your ow
 
 **Key scripts include:**
 
-- a
-- b
 - `makomori_label.py`: Classifies each film in the dataset as "pass" or "fail" based on the Mako Mori test criteria.
 - `mathRQ1.py` and `mathRQ2.py`: Runs various statistical tests, such as the Chi-Square Test and the Odds Ratio Test. Further explanation and listing of all tests can be found at /data.
 
